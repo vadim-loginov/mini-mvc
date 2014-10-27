@@ -31,14 +31,14 @@ class View
         include $_SERVER['DOCUMENT_ROOT'] . '/minimvc/views/layouts/' . $layoutName . '.php';
     }
 
-    public function headLinks($link = null) {
-        if (empty($link)) {
+    public function headLinks(array $links = null) {
+        if (empty($links)) {
             // Если не задан $link, выводим всё
             foreach ($this->headLinks as $value) {
                 echo "$value\n";
             }
         } else {
-            $this->headLinks[] = $link;
+            $this->headLinks = array_merge($this->headLinks, $links);            
         }
     }
     
